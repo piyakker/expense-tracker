@@ -2,10 +2,11 @@ const express = require('express')
 const router = express.Router()
 
 router.get('/new', (req, res) => {
-  res.send('get create page')
+  res.render('new')
 })
 
 router.post('/', (req, res) => {
+  console.log(req.body)
   res.send('get all records')
 })
 
