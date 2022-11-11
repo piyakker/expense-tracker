@@ -1,0 +1,27 @@
+<h2>請修改你的支出</h2>
+<form action="/records/{{record._id}}?_method=PUT" method="POST" class=" needs-validation">
+  <div class="mb-3">
+    <label for="recordName" class="form-label">名稱* :</label>
+    <input type="text" class="form-control" id="recordName" name="recordName" value="{{record.name}}">
+  </div>
+  <div class="mb-3">
+    <label for="recordDate" class="form-label">日期* :</label>
+    <input type="date" class="form-control" id="recordDate" name="recordDate" value="{{record.date}}">
+  </div>
+  <div class="mb-3">
+    <label for="recordCategory" class="form-label">類別* :</label>
+    <select name="recordCategory" id="recordCategory" class="form-control">
+      <option value=1>家居物業</option>
+      <option value=2>交通出行</option>
+      <option value=3>休閒娛樂</option>
+      <option value=4>餐飲食品</option>
+      <option value=5>其他</option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label for="recordAmount" class="form-label">金額* :</label>
+    <input type="number" class="form-control" id="recordAmount" name="recordAmount" value="{{record.amount}}">
+  </div>
+
+  <button type="submit" class="btn btn-primary">送出</button>
+</form>

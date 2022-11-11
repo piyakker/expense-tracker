@@ -1,5 +1,7 @@
 const express = require('express')
+const dayjs = require('dayjs')
 const router = express.Router()
+const Category = require('../../models/category')
 const Record = require('../../models/record')
 const { route } = require('./home')
 
@@ -14,15 +16,21 @@ router.post('/', (req, res) => {
   .catch(err => console.log(err))
 })
 
-route.get('/:record_id/edit', (req, res) => {
-  res.send('edit page')
+router.get('/:record_id/edit', (req, res) => {
+  const recordId = req.params.record_id
+  return Record.findOne({_id: recordId})
+  .lean()
+  .then(record => {
+    record.date = dayjs(record.date).format('YYYY-MM-DD')
+    res.render('edit', {record})
+  })
 })
 
-route.put('/:record_id', (req, res) => {
+router.put('/:record_id', (req, res) => {
   res.send('update record')
 })
 
-route.delete('/:record_id', (req, res) => {
+router.delete('/:record_id', (req, res) => {
   res.send('delete record')
 })
 
