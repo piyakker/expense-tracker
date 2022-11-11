@@ -16,7 +16,12 @@ require('./config/mongoose')
 //引用handlebars
 app.engine('hbs', exphbs({
   defaultLayout: 'main',
-  extname: 'hbs'
+  extname: 'hbs',
+  helpers: {
+    compare: function(arg1, arg2, options){
+      return (arg1 === arg2) ? options.fn(this) : options.inverse(this)
+    }
+  }
 }))
 app.set('view engine', 'hbs')
 

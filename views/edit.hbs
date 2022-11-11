@@ -11,11 +11,21 @@
   <div class="mb-3">
     <label for="recordCategory" class="form-label">類別* :</label>
     <select name="recordCategory" id="recordCategory" class="form-control">
-      <option value=1>家居物業</option>
-      <option value=2>交通出行</option>
-      <option value=3>休閒娛樂</option>
-      <option value=4>餐飲食品</option>
-      <option value=5>其他</option>
+      <option value=1 {{#compare record.categoryId 1}} selected {{/compare}}>
+        家居物業
+      </option>
+      <option value=2 {{#compare record.categoryId 2}} selected {{/compare}}>
+        交通出行
+      </option>
+      <option value=3 {{#compare record.categoryId 3}} selected {{/compare}}>
+         休閒娛樂
+      </option>
+      <option value=4 {{#compare record.categoryId 4}} selected {{/compare}}>
+        餐飲食品
+      </option>
+      <option value=5 {{#compare record.categoryId 5}} selected {{/compare}}>
+         其他
+      </option>
     </select>
   </div>
   <div class="mb-3">
