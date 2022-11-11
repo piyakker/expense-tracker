@@ -1,1 +1,20 @@
-<h2>get all records</h2>
+<h2>總金額: {{totalAmount}}</h2>
+
+{{#each records}}
+<div class="my-2">
+  <div class="outline border border-secondary rounded d-inline-block">
+    <div class="m-2">
+      {{{this.category}}}
+      {{this.name}}
+      {{this.date}}
+      {{this.amount}}
+      <a href="/records/{{this._id}}/edit" class="mx-3 btn btn-success" role='button'>edit</a>
+      <form action="/records/{{ this._id }}?_method=DELETE" method="POST" style="display: inline;">
+        <button type="submit" class="mx-3 btn btn-danger">delete</button>
+      </form>
+    </div>
+  </div>
+</div>
+{{/each}}
+
+<a href="/records/new" class="btn btn-info">新增支出</a>

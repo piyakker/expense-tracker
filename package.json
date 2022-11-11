@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dayjs": "^1.11.6",
     "dotenv": "^16.0.3",
     "express": "^4.16.4",
     "express-handlebars": "^3.0.0",
