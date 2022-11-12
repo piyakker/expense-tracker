@@ -1,7 +1,7 @@
 const express = require('express')
 const exphbs = require('express-handlebars')
 const methodOverride = require('method-override')
-const dayjs = require('dayjs')
+const session = require('express-session')
 
 const app = express()
 const port = 3000
@@ -35,9 +35,16 @@ app.engine('hbs', exphbs({
 }))
 app.set('view engine', 'hbs')
 
+app.use(session({
+  secret: 'ThisIsMySecret',
+  resave: false,
+  saveUninitialized: true
+}))
+
 app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
 app.use(express.static('public'))
+
 
 app.use('/', routes)
 
