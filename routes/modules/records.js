@@ -10,7 +10,6 @@ router.get('/new', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-  console.log(req.body)
   return Record.create(req.body)
   .then(() => res.redirect('/'))
   .catch(err => console.log(err))
