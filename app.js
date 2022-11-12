@@ -1,4 +1,4 @@
-const express =require('express')
+const express = require('express')
 const exphbs = require('express-handlebars')
 const methodOverride = require('method-override')
 const dayjs = require('dayjs')
@@ -18,8 +18,18 @@ app.engine('hbs', exphbs({
   defaultLayout: 'main',
   extname: 'hbs',
   helpers: {
-    compare: function(arg1, arg2, options){
+    compare: function (arg1, arg2, options) {
       return (arg1 === arg2) ? options.fn(this) : options.inverse(this)
+    },
+    addIcon: function (iconNumber) {
+      const CATEGORY ={
+        1: 'fa-solid fa-house',
+        2: 'fa-solid fa-van-shuttle',
+        3: 'fa-solid fa-face-grin-beam',
+        4: 'fa-solid fa-utensils',
+        5: 'fa-solid fa-pen'
+      }
+      return CATEGORY[iconNumber]
     }
   }
 }))

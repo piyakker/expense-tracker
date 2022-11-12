@@ -6,7 +6,7 @@ const dayjs = require('dayjs')
 
 router.get('/', (req, res) => {
   return Record.find({})
-  .populate('categoryId')
+  // .populate('categoryId')
   .lean()
     .then(records => {
       let totalAmount = 0
