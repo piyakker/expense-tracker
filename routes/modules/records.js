@@ -24,10 +24,15 @@ router.get('/:record_id/edit', (req, res) => {
     record.date = dayjs(record.date).format('YYYY-MM-DD')
     res.render('edit', {record})
   })
+  .catch(err => console.log(err))
 })
 
 router.put('/:record_id', (req, res) => {
-  res.send('update record')
+  const recordId = req.params.record_id
+  console.log(req.body)
+  return Record.findOneAndUpdate({_id: recordId}, req.body)
+  .then(()=> res.redirect('/'))
+  .catch(err => console.log(err))
 })
 
 router.delete('/:record_id', (req, res) => {

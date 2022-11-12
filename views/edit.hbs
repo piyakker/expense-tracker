@@ -1,16 +1,16 @@
 <h2>請修改你的支出</h2>
 <form action="/records/{{record._id}}?_method=PUT" method="POST" class=" needs-validation">
   <div class="mb-3">
-    <label for="recordName" class="form-label">名稱* :</label>
-    <input type="text" class="form-control" id="recordName" name="recordName" value="{{record.name}}">
+    <label for="name" class="form-label">名稱* :</label>
+    <input type="text" class="form-control" id="name" name="name" value="{{record.name}}" required>
   </div>
   <div class="mb-3">
-    <label for="recordDate" class="form-label">日期* :</label>
-    <input type="date" class="form-control" id="recordDate" name="recordDate" value="{{record.date}}">
+    <label for="date" class="form-label">日期* :</label>
+    <input type="date" class="form-control" id="date" name="date" value="{{record.date}}" required>
   </div>
   <div class="mb-3">
-    <label for="recordCategory" class="form-label">類別* :</label>
-    <select name="recordCategory" id="recordCategory" class="form-control">
+    <label for="categoryId" class="form-label">類別* :</label>
+    <select name="categoryId" id="categoryId" class="form-control">
       <option value=1 {{#compare record.categoryId 1}} selected {{/compare}}>
         家居物業
       </option>
@@ -29,8 +29,8 @@
     </select>
   </div>
   <div class="mb-3">
-    <label for="recordAmount" class="form-label">金額* :</label>
-    <input type="number" class="form-control" id="recordAmount" name="recordAmount" value="{{record.amount}}">
+    <label for="amount" class="form-label">金額* :</label>
+    <input type="number" class="form-control" id="amount" name="amount" value="{{record.amount}}" required>
   </div>
 
   <button type="submit" class="btn btn-primary">送出</button>
