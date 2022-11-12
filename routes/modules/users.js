@@ -10,7 +10,7 @@ router.post('/login', (req, res) => {
 })
 
 router.get('/register', (req, res) => {
-  res.send('register page')
+  res.render('register')
 })
 
 router.post('/register', (req, res) => {
