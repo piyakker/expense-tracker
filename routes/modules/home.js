@@ -5,7 +5,12 @@ const Record = require('../../models/record')
 const dayjs = require('dayjs')
 
 router.get('/', (req, res) => {
-  return Record.find({})
+  const {categoryId} = req.query
+  const queryObject = {}
+  if (categoryId) {
+    queryObject.categoryId = categoryId
+  }
+  return Record.find(queryObject)
   // .populate('categoryId')
   .lean()
     .then(records => {
