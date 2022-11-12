@@ -29,14 +29,16 @@ router.get('/:record_id/edit', (req, res) => {
 
 router.put('/:record_id', (req, res) => {
   const recordId = req.params.record_id
-  console.log(req.body)
   return Record.findOneAndUpdate({_id: recordId}, req.body)
   .then(()=> res.redirect('/'))
   .catch(err => console.log(err))
 })
 
 router.delete('/:record_id', (req, res) => {
-  res.send('delete record')
+  const recordId = req.params.record_id
+  return Record.findOneAndDelete({ _id: recordId })
+    .then(() => res.redirect('/'))
+    .catch(err => console.log(err))
 })
 
 module.exports = router
