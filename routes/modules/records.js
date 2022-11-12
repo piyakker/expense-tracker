@@ -9,14 +9,18 @@ router.get('/new', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-  return Record.create(req.body)
+  const userId = req.user._id
+  const newRecord = req.body
+  newRecord.userId = userId
+  return Record.create(newRecord)
   .then(() => res.redirect('/'))
   .catch(err => console.log(err))
 })
 
 router.get('/:record_id/edit', (req, res) => {
+  const userId = req.user._id
   const recordId = req.params.record_id
-  return Record.findOne({_id: recordId})
+  return Record.findOne({ _id: recordId, userId })
   .lean()
   .then(record => {
     record.date = dayjs(record.date).format('YYYY-MM-DD')
@@ -26,15 +30,17 @@ router.get('/:record_id/edit', (req, res) => {
 })
 
 router.put('/:record_id', (req, res) => {
+  const userId = req.user._id
   const recordId = req.params.record_id
-  return Record.findOneAndUpdate({_id: recordId}, req.body)
+  return Record.findOneAndUpdate({_id: recordId, userId}, req.body)
   .then(()=> res.redirect('/'))
   .catch(err => console.log(err))
 })
 
 router.delete('/:record_id', (req, res) => {
+  const userId = req.user._id
   const recordId = req.params.record_id
-  return Record.findOneAndDelete({ _id: recordId })
+  return Record.findOneAndDelete({ _id: recordId, userId })
     .then(() => res.redirect('/'))
     .catch(err => console.log(err))
 })

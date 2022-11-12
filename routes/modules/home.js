@@ -5,8 +5,9 @@ const Record = require('../../models/record')
 const dayjs = require('dayjs')
 
 router.get('/', (req, res) => {
+  const userId = req.user._id
   const {categoryId} = req.query
-  const queryObject = {}
+  const queryObject = {userId}
   if (categoryId) {
     queryObject.categoryId = categoryId
   }

@@ -20,6 +20,12 @@ const recordSchema = new Schema({
     type: Number,
     required: true
   },
+  userId: {
+    type: Number,
+    ref: 'User',
+    index: true,
+    required: true
+  }
 })
 
 module.exports = mongoose.model('Record', recordSchema)
